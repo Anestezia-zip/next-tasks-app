@@ -17,3 +17,25 @@ export const createTask = async (formData: FormData) => {
 
     revalidatePath('/')
 }
+
+export const changeStatus = async (formData: FormData) => {
+    const inputId = formData.get('inputId') as string;
+    const task = await prisma.task.findUnique({
+        where: {
+            id: inputId,
+        }
+    })
+
+    const updateStatus = !task?.isCompleted;
+
+    await prisma.task.update({
+        where: {
+            id: inputId,
+        },
+        data: {
+            isCompleted: updateStatus,
+        }
+    })
+
+    revalidatePath('/')
+}

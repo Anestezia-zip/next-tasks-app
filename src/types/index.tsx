@@ -20,4 +20,13 @@ export interface buttonProps {
     onClick?: () => void;
     actionBtn?: boolean;
     bgColor?: string;
+    className?: string;
+}
+
+
+export interface taskProps {
+    id: string;
+    title?: string | null;
+    isCompleted: boolean;
+    createdAt?: Date;
 }
