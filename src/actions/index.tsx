@@ -43,7 +43,7 @@ export const changeStatus = async (formData: FormData) => {
 export const editTask = async (formData: FormData) => {
     const inputId = formData.get('inputId') as string;
     const newTitle = formData.get('newTitle') as string;
-    
+
     await prisma.task.update({
         where: {
             id: inputId,

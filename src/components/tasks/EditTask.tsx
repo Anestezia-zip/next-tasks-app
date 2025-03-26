@@ -2,7 +2,7 @@
 
 import React, { FormEvent, useState } from 'react'
 import Button from '../button/Button'
-import { MdDelete, MdEdit } from 'react-icons/md'
+import { MdEdit } from 'react-icons/md'
 import { taskProps } from '@/types'
 import Form from '../form/Form'
 import Input from '../input/Input'

@@ -1,7 +1,6 @@
 import AddTask from "@/components/tasks/AddTask";
 import Task from "@/components/tasks/Task";
 import { prisma } from "@/utils/prisma";
-import Image from "next/image";
 
 async function getData() {
   return await prisma.task.findMany({

@@ -8,12 +8,12 @@ import Input from '../input/Input'
 
 
 const DeleteTask = ({ task }: { task: taskProps }) => {
-  return (
-    <Form action={actions.deleteTask}>
-        <Input type='hidden' name="inputId" value={task.id} />
-        <Button type='submit' text={<FaTrash />} actionBtn bgColor='text-lg p-2 rounded text-red-400' className='active:scale-110' />
-    </Form>
-  )
+    return (
+        <Form action={actions.deleteTask}>
+            <Input type='hidden' name="inputId" value={task.id} />
+            <Button type='submit' text={<FaTrash />} actionBtn bgColor='text-lg p-2 rounded text-red-400' className='active:scale-110' />
+        </Form>
+    )
 }
 
 export default DeleteTask
