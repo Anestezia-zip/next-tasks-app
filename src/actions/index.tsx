@@ -26,14 +26,41 @@ export const changeStatus = async (formData: FormData) => {
         }
     })
 
-    const updateStatus = !task?.isCompleted;
+    const updatedStatus = !task?.isCompleted;
 
     await prisma.task.update({
         where: {
             id: inputId,
         },
         data: {
-            isCompleted: updateStatus,
+            isCompleted: updatedStatus,
+        }
+    })
+
+    revalidatePath('/')
+}
+
+export const editTask = async (formData: FormData) => {
+    const inputId = formData.get('inputId') as string;
+    const newTitle = formData.get('newTitle') as string;
+    
+    await prisma.task.update({
+        where: {
+            id: inputId,
+        },
+        data: {
+            title: newTitle,
+        }
+    })
+
+    revalidatePath('/')
+}
+
+export const deleteTask = async (formData: FormData) => {
+    const inputId = formData.get('inputId') as string;
+    await prisma.task.delete({
+        where: {
+            id: inputId,
         }
     })
 

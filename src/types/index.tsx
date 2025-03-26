@@ -5,6 +5,8 @@ export interface inputProps {
     type: string;
     placeholder?: string;
     value?: string;
+    className?: string;
+    onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface formProps {

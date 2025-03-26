@@ -27,6 +27,10 @@ body {
 
 @layer components {
   .big-circle {
-    @apply absolute -left-[30%] -top-44 -z-1 transform -translate-y-1/2 w-[1200px] h-[1200px] bg-orange-900/50 rounded-full;
+    @apply absolute -left-[35%] -z-1 -top-[400px] transform -translate-y-1/2 w-[1500px] h-[1500px] bg-orange-900/70 rounded-full;
+  }
+
+  .small-circle {
+    @apply w-[600px] h-[600px] absolute -z-1 -top-96 -right-36 bg-amber-200 rounded-full;
   }
 }

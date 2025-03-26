@@ -1,18 +1,27 @@
+"use client"
+
 import { taskProps } from '@/types'
-import React from 'react'
+import React, { useState } from 'react'
 import ChangeTask from './ChangeTask'
+import EditTask from './EditTask'
+import DeleteTask from './DeleteTask'
 
 const Task = ({ task }: { task: taskProps }) => {
-  return (
-    <div className='flex gap-2'>
-      <ChangeTask task={task} />
-      <span className="font-bold">{task.title}</span>
-      <div className="flex items-center mx-2">
-        {/* <EditTask task={task} /> */}
-      </div>
+  const [editTaskState, setEditTaskState] = useState(false)
 
-      <div className="flex items-center">
-        {/* <DeleteTask task={task} /> */}
+  const taskDecoration = {
+    textDecoration: task.isCompleted ? 'line-through' : 'none',
+  }
+
+  return (
+    <div className='flex justify-between items-center gap-4 border-b-[1px]' style={taskDecoration}>
+      <ChangeTask task={task} setEditTaskState={setEditTaskState} />
+        <span className="font-bold" style={{opacity: task.isCompleted ? 0.5 : 1}}>{task.title}</span>
+      <div className='flex justify-between items-center gap-8'>
+        <div className='flex items-center' style={{opacity: task.isCompleted ? 0.5 : 1}}>
+          <EditTask task={task} editTaskState={editTaskState} setEditTaskState={setEditTaskState} />
+          <DeleteTask task={task} />
+        </div>
       </div>
     </div>
   )
