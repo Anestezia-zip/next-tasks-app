@@ -20,7 +20,7 @@ const Task = ({ task }: { task: taskProps }) => {
       <div className='flex justify-between items-center gap-8'>
         <div className='flex items-center' style={{ opacity: task.isCompleted ? 0.5 : 1 }}>
           <EditTask task={task} editTaskState={editTaskState} setEditTaskState={setEditTaskState} />
-          <DeleteTask task={task} />
+          <DeleteTask task={task} setEditTaskState={setEditTaskState}/>
         </div>
       </div>
     </div>
