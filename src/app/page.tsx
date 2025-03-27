@@ -3,17 +3,23 @@ import Task from "@/components/tasks/Task";
 import { prisma } from "@/utils/prisma";
 
 async function getData() {
-  return await prisma.task.findMany({
-    select: {
-      title: true,
-      id: true,
-      isCompleted: true,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    }
-  })
+  try {
+    return await prisma.task.findMany({
+      select: {
+        title: true,
+        id: true,
+        isCompleted: true,
+      },
+      orderBy: {
+        createdAt: 'desc',
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return [];
+  }
 }
+
 
 export default async function Home() {
   const data = await getData()
@@ -33,8 +39,8 @@ export default async function Home() {
 
         {data.length > 0 ? (
           <ul className="flex flex-col items-center justify-center mt-8 text-center">
-            {data.map((task, i) => (
-              <li className="w-full" key={i}>
+            {data.map((task) => (
+              <li className="w-full" key={task.id}>
                 <Task task={task} />
               </li>
             ))}
